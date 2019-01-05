@@ -1,0 +1,12 @@
+{% extends "base_template.html" %} 
+{% load staticfiles %} 
+{% block title %} Search Contact {% endblock %}
+{% block content %}
+    <form class="form-horizontal" method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search_string">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+{% endblock %}
+
+

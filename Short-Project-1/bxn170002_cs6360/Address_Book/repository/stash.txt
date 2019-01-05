@@ -1,0 +1,68 @@
+<!--
+    <form class="form-signin" id="contact_form" method="post" action={% url "add_new_contact" %}>
+        {% csrf_token %}
+
+        {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        {% for hidden_field in contact_form.hidden_fields %}
+            {{ hidden_field }}
+        {% endfor %}
+
+        {% for field in contact_form.visible_fields %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+
+        <table>
+            {{ phone_form }}
+        </table>
+
+
+
+    <!--
+       {{ phone_form.management_form }}
+        <table>
+            {% for form in phone_form %}
+                {{ form }}
+            {% endfor %}
+        </table>
+
+
+        {% for item in phone_form %}
+            {{ item.label_tag }}
+            {{ item }}
+            {% if phone_form.can_delete %}
+                <li>{{ phone_form.DELETE }}</li>
+            {% endif %}
+        {% endfor %}
+        -->
+
+        <!--
+        {{ contact_form.as_p }}
+        {{ address_form.as_p }}
+        {{ phone_form.as_p }}
+        {{ date_form.as_p }}
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">
+        Register</button>
+    </form>
+    -->

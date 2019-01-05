@@ -1,0 +1,28 @@
+{% extends "base_template.html" %} 
+{% load staticfiles %} 
+{% block title %} Address Book Home {% endblock %}
+{% block content %}
+    <h1>Address Book</h1>
+    <p><a href={% url 'add_new_contact' %}>Add new Contact</a> </p>
+    <p><a href={% url 'search' %}>Search</a></p>
+
+    {% for key, item in contacts.items %}
+    <div class = "col-md-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{ item.lname}}, {{ item.fname }}</h5>
+            {% if item.phone.0 %}
+                <h6 class="card-subtitle mb-2 text-muted">{{ item.phone.0.area_code }} - {{ item.phone.0.number }}</h6>
+            {% endif %}
+            {% if item.address.0 %}
+                <p class="card-text">{{ item.address.0.address }}, {{ item.address.0.city }}, {{ item.address.0.state }}, {{ item.address.0.zip }}</p>
+            {% endif %}
+            <a href="{% url 'edit_contact' key %}" class="card-link">Edit</a>
+            <a href="{% url 'delete_contact' key %}" class="card-link">Delete</a>
+            
+            </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+{% endblock %}

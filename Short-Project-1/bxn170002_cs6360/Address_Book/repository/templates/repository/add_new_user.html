@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New User</title>
+</head>
+{% load staticfiles %}
+<script src="{% static 'jquery.min.js' %}"></script>
+<script src="{% static 'jquery.formset.js' %}"></script>
+<body>
+    <form class="form-horizontal" method="POST" action="{% url "add_new_contact" %}">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Contact Details</legend>
+
+                <div>
+                {{ contact_form.management_form }}
+                {{ contact_form.as_p }}
+                <div class="link-formset-phone">
+                    {{ phone_form.management_form }}
+                    {{ phone_form.as_p }}
+                </div>
+                <div class="link-formset-address">
+                    {{ address_form.management_form }}
+                    {{ address_form.as_p }}
+                </div>
+                <div class="link-formset-date">
+                    {{ date_form.management_form }}
+                    {{ date_form.as_p }}
+                </div>
+
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">
+                Submit</button>
+            <a href = "{% url 'home' %}">Exit</a>
+        </fieldset>
+
+
+
+    <script type='text/javascript'>
+        $('.link-formset-phone').formset({
+            addText: 'Add New Phone',
+            deleteText: 'Remove Phone'
+        });
+        $('.link-formset-address').formset({
+            addText: 'Add New Address',
+            deleteText: 'Remove Address'
+        });
+        $('.link-formset-date').formset({
+            addText: 'Add New Date',
+            deleteText: 'Remove Date'
+        });
+    </script>
+</body>
+</html>

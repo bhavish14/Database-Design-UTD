@@ -1,0 +1,54 @@
+<!doctype html>
+{%load staticfiles %}
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>View Contact</title>
+    </head>
+    <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+            <h3 class="display-6">{{ contact.lname }}, {{ contact.fname }} {{ contact.mname }}</h3>
+            <a href='' type="button" class="btn btn-outline-dark" >Edit</a>   
+            <a href='#' type="button" class="btn btn-outline-danger">Delete</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <h5 class="card-title">Phone</h5>
+                {% for key, item in phone.items %}
+                    <h6 class="card-subtitle mb-2 text-muted">{{ item.type }}</h6>
+                    <p class="card-text">{{ item.area_code }} - {{ item.number }}</p>
+                {% endfor %}              
+            </div>
+        </div>
+
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <h5 class="card-title">Address</h5>
+                {% for key, item in address.items %}
+                    <h6 class="card-subtitle mb-2 text-muted">{{ item.type }}</h6>
+                    <p class="card-text"></p>{{ item.address }}</p>
+                    <p class="card-text">{{ item.city }}, {{ item.state }} - {{ item.zip }}</p>
+                {% endfor %}              
+            </div>
+        </div>
+
+        <div class="card" style="width: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Dates</h5>
+                    {% for key, item in date.items %}
+                        <h6 class="card-subtitle mb-2 text-muted">{{ item.type }} - {{ item.date }}</h6>
+                    {% endfor %}              
+                </div>
+            </div>
+        
+    </body>
+</html>
